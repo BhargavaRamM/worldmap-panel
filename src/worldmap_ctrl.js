@@ -13,7 +13,7 @@ const panelDefaults = {
   mapCenter: '(0°, 0°)',
   mapCenterLatitude: 0,
   mapCenterLongitude: 0,
-  initialZoom: 1,
+  initialZoom: 5,
   valueName: 'total',
   circleMinSize: 2,
   circleMaxSize: 30,
@@ -27,6 +27,7 @@ const panelDefaults = {
   decimals: 0
 };
 
+/*
 const mapCenters = {
   '(0°, 0°)': {mapCenterLatitude: 0, mapCenterLongitude: 0},
   'North America': {mapCenterLatitude: 40, mapCenterLongitude: -100},
@@ -34,6 +35,7 @@ const mapCenters = {
   'West Asia': {mapCenterLatitude: 26, mapCenterLongitude: 53},
   'SE Asia': {mapCenterLatitude: 10, mapCenterLongitude: 106}
 };
+*/
 
 export default class WorldmapCtrl extends MetricsPanelCtrl {
   constructor($scope, $injector, contextSrv) {
@@ -155,10 +157,10 @@ export default class WorldmapCtrl extends MetricsPanelCtrl {
   }
 
   setNewMapCenter() {
-    if (this.panel.mapCenter !== 'custom') {
-      this.panel.mapCenterLatitude = mapCenters[this.panel.mapCenter].mapCenterLatitude;
-      this.panel.mapCenterLongitude = mapCenters[this.panel.mapCenter].mapCenterLongitude;
-    }
+    //this.panel.mapCenterLatitude = mapCenters[this.panel.mapCenter].mapCenterLatitude;
+    //this.panel.mapCenterLongitude = mapCenters[this.panel.mapCenter].mapCenterLongitude;
+    this.panel.mapCenterrLatitude = this.panel.mapCenterLatitude;
+    this.panel.mapCenterLongitude = this.panel.mapCenterLongitude;
     this.mapCenterMoved = true;
     this.render();
   }

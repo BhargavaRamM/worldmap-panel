@@ -221,6 +221,8 @@ System.register(['lodash', './leaflet'], function (_export, _context) {
           value: function panToMapCenter() {
             this.map.panTo([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]);
             this.ctrl.mapCenterMoved = false;
+            window.L.Icon.Default.imagePath = '/public/plugins/grafana-worldmap-panel/images/';
+            window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
           }
         }, {
           key: 'removeLegend',

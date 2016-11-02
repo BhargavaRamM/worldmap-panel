@@ -1,0 +1,26 @@
+<div class="editor-row">
+  <div class="section gf-form-group">
+    <h5 class="section-heading">Map Coordinates</h5>
+    <div class="gf-form">
+      <label class="gf-form-label width-10">Center</label>
+      <div class="gf-form-select-wrapper max-width-10">
+	<select class="input-small gf-form-input" ng-model="ctrl.panel.mapCenter" ng-options="t for t in ['(0°, 0°)', 'North America', 'Europe', 'West Asia', 'SE Asia', 'custom']" ng-change="ctrl.setNewMapCenter()"></select>
+      </div>
+      <div class="gf-form" ng-show="ctrl.panel.mapCenter === 'custom'">
+	<div>
+	  <label class="gf-form-label width-10">Latitude</label>
+          <input type="text" class="input-small gf-form-input width-10" ng-model="ctrl.panel.mapCenterLatitude" ng-change="ctrl.setNewMapCenter()" ng-model-onblur />
+	</div>
+	<div>
+	  <label class="gf-form-label width-10">Longitude</label>
+          <input type="text" class="input-small gf-form-input width-10" ng-model="ctrl.panel.mapCenterLongitude" ng-change="ctrl.setNewMapCenter()" ng-model-onblur />
+	</div>
+      </div>
+      
+      <div class="gf-form">
+	<label class="gf-form-label width-10">Initial Zoom</label>
+	<input type="text" class="input-small gf-form-input width-10" ng-model="ctrl.panel.initialZoom" ng-change="ctrl.setZoom()" ng-model-onblur />
+      </div>
+    </div>
+  </div>
+</div>

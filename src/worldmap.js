@@ -81,6 +81,20 @@ export default class WorldMap {
     }
   }
 
+
+  /*
+  addMarker() {
+    return  window.L.Marker([this.ctrl.panel.mapCenterLatitude, this.ctrl.panel.mapCenterLongitude]).addTo(this.map);
+    //return marker;
+  }
+  */
+  /*
+  addMarker() {
+    this.marker = this.createMarker();
+    return window.L.layerGroup(this.marker).addTo(this.map);
+  }
+  */
+
   createCircles() {
     const circles = [];
     this.ctrl.data.forEach((dataPoint) => {
@@ -110,6 +124,7 @@ export default class WorldMap {
       }
     });
   }
+
 
   createCircle(dataPoint) {
     const circle = window.L.circleMarker([dataPoint.locationLatitude, dataPoint.locationLongitude], {
@@ -169,6 +184,8 @@ export default class WorldMap {
   panToMapCenter() {
     this.map.panTo([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]);
     this.ctrl.mapCenterMoved = false;
+    window.L.Icon.Default.imagePath = '/public/plugins/grafana-worldmap-panel/images/';
+    window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
   }
 
   removeLegend() {
