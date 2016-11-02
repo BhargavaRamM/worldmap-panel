@@ -3,7 +3,7 @@
 System.register(['app/plugins/sdk', 'app/core/time_series2', 'app/core/utils/kbn', 'lodash', './map_renderer', './data_formatter', './css/worldmap-panel.css!'], function (_export, _context) {
   "use strict";
 
-  var MetricsPanelCtrl, TimeSeries, kbn, _, mapRenderer, DataFormatter, _createClass, panelDefaults, mapCenters, WorldmapCtrl;
+  var MetricsPanelCtrl, TimeSeries, kbn, _, mapRenderer, DataFormatter, _createClass, panelDefaults, WorldmapCtrl;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -37,7 +37,6 @@ System.register(['app/plugins/sdk', 'app/core/time_series2', 'app/core/utils/kbn
 
   return {
     setters: [function (_appPluginsSdk) {
-      /* eslint import/no-extraneous-dependencies: 0 */
       MetricsPanelCtrl = _appPluginsSdk.MetricsPanelCtrl;
     }, function (_appCoreTime_series) {
       TimeSeries = _appCoreTime_series.default;
@@ -74,7 +73,7 @@ System.register(['app/plugins/sdk', 'app/core/time_series2', 'app/core/utils/kbn
         mapCenter: '(0°, 0°)',
         mapCenterLatitude: 0,
         mapCenterLongitude: 0,
-        initialZoom: 1,
+        initialZoom: 5,
         valueName: 'total',
         circleMinSize: 2,
         circleMaxSize: 30,
@@ -86,13 +85,6 @@ System.register(['app/plugins/sdk', 'app/core/time_series2', 'app/core/utils/kbn
         showLegend: true,
         esMetric: 'Count',
         decimals: 0
-      };
-      mapCenters = {
-        '(0°, 0°)': { mapCenterLatitude: 0, mapCenterLongitude: 0 },
-        'North America': { mapCenterLatitude: 40, mapCenterLongitude: -100 },
-        'Europe': { mapCenterLatitude: 46, mapCenterLongitude: 14 },
-        'West Asia': { mapCenterLatitude: 26, mapCenterLongitude: 53 },
-        'SE Asia': { mapCenterLatitude: 10, mapCenterLongitude: 106 }
       };
 
       WorldmapCtrl = function (_MetricsPanelCtrl) {
@@ -168,8 +160,8 @@ System.register(['app/plugins/sdk', 'app/core/time_series2', 'app/core/utils/kbn
             } else if (this.panel.locationData === 'table') {
               // .. Do nothing
             } else if (this.panel.locationData !== 'geohash') {
-                window.$.getJSON('public/plugins/grafana-worldmap-panel/data/' + this.panel.locationData + '.json').then(this.reloadLocations.bind(this));
-              }
+              window.$.getJSON('public/plugins/grafana-worldmap-panel/data/' + this.panel.locationData + '.json').then(this.reloadLocations.bind(this));
+            }
           }
         }, {
           key: 'reloadLocations',
@@ -232,10 +224,10 @@ System.register(['app/plugins/sdk', 'app/core/time_series2', 'app/core/utils/kbn
         }, {
           key: 'setNewMapCenter',
           value: function setNewMapCenter() {
-            if (this.panel.mapCenter !== 'custom') {
-              this.panel.mapCenterLatitude = mapCenters[this.panel.mapCenter].mapCenterLatitude;
-              this.panel.mapCenterLongitude = mapCenters[this.panel.mapCenter].mapCenterLongitude;
-            }
+            //this.panel.mapCenterLatitude = mapCenters[this.panel.mapCenter].mapCenterLatitude;
+            //this.panel.mapCenterLongitude = mapCenters[this.panel.mapCenter].mapCenterLongitude;
+            this.panel.mapCenterrLatitude = this.panel.mapCenterLatitude;
+            this.panel.mapCenterLongitude = this.panel.mapCenterLongitude;
             this.mapCenterMoved = true;
             this.render();
           }
