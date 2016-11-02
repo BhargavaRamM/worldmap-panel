@@ -22,7 +22,8 @@ export default function link(scope, elem, attrs, ctrl) {
 
     if (!ctrl.map.legend && ctrl.panel.showLegend) ctrl.map.createLegend();
 
-    //if (!ctrl.map.marker) ctrl.map.addMarker();
+    //ctrl.map.updateMarker();
+
     ctrl.map.drawCircles();
   }
 }

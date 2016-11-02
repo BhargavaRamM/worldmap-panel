@@ -81,20 +81,6 @@ export default class WorldMap {
     }
   }
 
-
-  /*
-  addMarker() {
-    return  window.L.Marker([this.ctrl.panel.mapCenterLatitude, this.ctrl.panel.mapCenterLongitude]).addTo(this.map);
-    //return marker;
-  }
-  */
-  /*
-  addMarker() {
-    this.marker = this.createMarker();
-    return window.L.layerGroup(this.marker).addTo(this.map);
-  }
-  */
-
   createCircles() {
     const circles = [];
     this.ctrl.data.forEach((dataPoint) => {
@@ -185,7 +171,19 @@ export default class WorldMap {
     this.map.panTo([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]);
     this.ctrl.mapCenterMoved = false;
     window.L.Icon.Default.imagePath = '/public/plugins/grafana-worldmap-panel/images/';
-    window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
+    console.log(this.map.hasLayer(this.map));
+    if(this.marker) {
+       console.log("In updating marker block");
+       console.log("removing marker");
+       this.map.removeLayer(this.marker);
+       console.log("adding marker");
+       this.marker = window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
+       console.log("Updated the marker");
+    }
+    else {
+    console.log("Adding a new marker");
+    this.marker = window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
+    }
   }
 
   removeLegend() {

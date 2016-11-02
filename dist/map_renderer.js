@@ -25,7 +25,8 @@ System.register(['./css/leaflet.css!', './worldmap'], function (_export, _contex
 
       if (!ctrl.map.legend && ctrl.panel.showLegend) ctrl.map.createLegend();
 
-      //if (!ctrl.map.marker) ctrl.map.addMarker();
+      //ctrl.map.updateMarker();
+
       ctrl.map.drawCircles();
     }
   }
