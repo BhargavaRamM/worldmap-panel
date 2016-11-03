@@ -22,12 +22,6 @@ export default function link(scope, elem, attrs, ctrl) {
 
     if (!ctrl.map.legend && ctrl.panel.showLegend) ctrl.map.createLegend();
 
-<<<<<<< HEAD
-    //if (!ctrl.map.marker) ctrl.map.addMarker();
-=======
-    //ctrl.map.updateMarker();
-
->>>>>>> 13ebca92d827cb58c61299bfcf5a12f8f39710be
     ctrl.map.drawCircles();
   }
 }

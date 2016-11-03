@@ -222,9 +222,7 @@ System.register(['lodash', './leaflet'], function (_export, _context) {
             this.map.panTo([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]);
             this.ctrl.mapCenterMoved = false;
             window.L.Icon.Default.imagePath = '/public/plugins/grafana-worldmap-panel/images/';
-<<<<<<< HEAD
-            window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
-=======
+            //window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
             console.log(this.map.hasLayer(this.map));
             if (this.marker) {
               console.log("In updating marker block");
@@ -237,7 +235,6 @@ System.register(['lodash', './leaflet'], function (_export, _context) {
               console.log("Adding a new marker");
               this.marker = window.L.marker([parseFloat(this.ctrl.panel.mapCenterLatitude), parseFloat(this.ctrl.panel.mapCenterLongitude)]).addTo(this.map);
             }
->>>>>>> 13ebca92d827cb58c61299bfcf5a12f8f39710be
           }
         }, {
           key: 'removeLegend',
